@@ -4,10 +4,11 @@ Stages exchange data through input/output .json files.
 
 ## Stages
 
-1. `1.collect-dataset.ipynb` Collect recognition models hypothesis for audios.
-  - Audios are taken from LibriSpeech dev-other, test-other sets.
-  - For recognition, the original audio and its noisy variants are taken.
-  - Outputs:
+###  [1.collect-dataset.ipynb](./1.collect-dataset.ipynb) 
+Collect recognition models hypothesis for audios.
+- Audios are taken from LibriSpeech dev-other, test-other sets.
+- For recognition, the original audio and its noisy variants are taken.
+- Outputs:
     - `recognitions.json` – result dataset
       - `record` audio file name
       - `noise_level` audio noise level
@@ -18,10 +19,12 @@ Stages exchange data through input/output .json files.
       - `model` recognition model
       - `noise_level` audio noise level
       - `wer` WER value
-2. `2.collect-assessors-evaluations.md` Use crowdsourcing platform to collect SbS and meaning loss evaluations of texts.
-  - Inputs:
+    
+### [2.collect-assessors-evaluations.md](./2.collect-assessors-evaluations.md)
+Use crowdsourcing platform to collect SbS and meaning loss evaluations of texts.
+- Inputs:
     - `recognitions.json`
-  - Outputs:
+- Outputs:
     - `votes_sbs_raw.json` – raw markup for SbS recognition hypotheses comparison between two noise levels
       - `model` recognition model
       - `noise_left` audio noise level (for audio located left in task interface)
@@ -41,23 +44,27 @@ Stages exchange data through input/output .json files.
       - `noise` audio noise level
       - `reference` original text
       - `hypothesis` recognition model hypothesis
-      - `ok` TRUE if hypothesis preserves meaning of reference in the user's opinion, or FALSE otherwise
+      - `ok` TRUE if hypothesis preserves meaning of reference in the assessor's opinion, or FALSE otherwise
     - `votes_check.json` - aggregated (i.e. by majority) votes for meaning preservance or loss between recognition hypothesis and reference text
       - `model` recognition model
       - `level_idx` audio noise level
       - `votes_total` total votes
       - `votes_ok` votes for "meaning is preserved"
-3. `3.learn-mera.ipynb`
-  - Inputs:
+    
+### [3.learn-mera.ipynb](./3.learn-mera.ipynb)
+Learn MERa using assessors evaluations.
+- Inputs:
     - `votes_sbs_raw.json`
     - `votes_check_raw.json`
-  - Outputs:
+- Outputs:
     - `mera_sbs.json`
       - `votes_sbs_raw.json` with MERa values measured as `mera(reference, hypothesis_left)` and `mera(reference, hypothesis_right)`
     - `mera.json`
       - `votes_sbs_raw.json` with MERa values measured as `mera(reference, hypothesis)`
-4. `4.plot-graphs.ipynb` Metrics alignment with assessors evaluations plots.
-  - Inputs:
+
+### [4.plot-graphs.ipynb](./4.plot-graphs.ipynb)
+Metrics alignment with assessors evaluations plots.
+- Inputs:
     - `wers.json`
     - `votes_sbs.json`
     - `votes_check.json`
