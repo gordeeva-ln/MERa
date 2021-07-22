@@ -10,7 +10,7 @@ Context:
 "similar meaning":
 - If the further understanding of the text does not change after the replacement, then the second sentence has the similar meaning as the first one.
 
-##Task
+## Task
 1. Read both sentences.
 2. Choose one of the options: 
    - "Yes" (similar meaning), 
