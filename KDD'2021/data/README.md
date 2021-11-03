@@ -1,0 +1,1 @@
+This directory contains raw SbS and meaning loss evaluations of texts. See [README](../README.md) for JSON fields explanation.

@@ -2,6 +2,8 @@ The experiment is divided into stages, each stage is described by its own .ipynb
 
 Stages exchange data through input/output .json files.
 
+Assessors evaluations are in [data](./data) directory.
+
 ## Stages
 
 ###  [1.collect-dataset.ipynb](./1.collect-dataset.ipynb) 
